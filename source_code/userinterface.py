@@ -2,7 +2,6 @@ from tkinter import *
 import zoom_allocator
 import database_create
 import json
-import time
 
 
 class Application(Frame):
@@ -14,6 +13,12 @@ class Application(Frame):
         tournament = self.Tournament_Entry.get()
         token = self.Token_Entry.get()
         room_per_zoom = self.RPZ_Entry.get()
+
+        if(tabbyurl[-1] == '/'):
+            tabbyurl = tabbyurl[:-1]
+
+        print(tabbyurl)
+
         database_create.user_input(
             tabbyurl, tournament, f'Token {token}', room_per_zoom)
 
@@ -86,7 +91,7 @@ class Application(Frame):
         try:
             with open("inputs.json") as f:
                 inputs = json.load(f)
-                self.Token_Entry.insert(INSERT, inputs["token"])
+                self.Token_Entry.insert(INSERT, inputs["token"][6:])
                 self.Url_Entry.insert(INSERT, inputs["tabbyurl"])
                 self.Tournament_Entry.insert(INSERT, inputs["tournament"])
                 self.RPZ_Entry.insert(INSERT, inputs["room_per_zoom"])

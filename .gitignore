@@ -1,1 +1,4 @@
-_pycache_/
+source_code/_pycache_/
+*.json
+*.db
+*.csv

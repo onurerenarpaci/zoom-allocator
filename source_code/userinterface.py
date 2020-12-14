@@ -17,8 +17,6 @@ class Application(Frame):
         if(tabbyurl[-1] == '/'):
             tabbyurl = tabbyurl[:-1]
 
-        print(tabbyurl)
-
         database_create.user_input(
             tabbyurl, tournament, f'Token {token}', room_per_zoom)
 
